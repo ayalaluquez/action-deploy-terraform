@@ -75,7 +75,12 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1.0.1
-        
+      
+    - name: terraform var
+      run: 
+       echo "AWS_ACCESS_KEY_ID = '$AWS_ACCESS_KEY_ID'" >> terraform.tfvars    
+       ehco "AWS_SECRET_ACCESS_KEY = '$AWS_SECRET_ACCESS_KEY'" >> terraform.tfvars
+       
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
