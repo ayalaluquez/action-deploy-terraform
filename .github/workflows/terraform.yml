@@ -77,7 +77,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1.0.1
       
     - name: terraform var
-      run: 
+      run: |
        echo "AWS_ACCESS_KEY_ID = '$AWS_ACCESS_KEY_ID'" >> terraform.tfvars    
        echo "AWS_SECRET_ACCESS_KEY = '$AWS_SECRET_ACCESS_KEY'" >> terraform.tfvars
        
