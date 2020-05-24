@@ -87,6 +87,7 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
+      shell: bash
       run: terraform plan
       id: plan
     
