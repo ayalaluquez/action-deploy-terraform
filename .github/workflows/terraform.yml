@@ -64,6 +64,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -74,8 +75,6 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1.0.1
-      with:
-        terraform_version: 0.12.25
         
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
@@ -88,9 +87,9 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       shell: bash
-      run: terraform plan
+      run: terraform plan -no-color
       id: plan
-    
+
     - name: comment with plan
       uses: actions/github-script@0.9.0
       if: github.event_name == 'pull_request'
